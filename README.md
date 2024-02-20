@@ -1,4 +1,4 @@
-Simple Android Login Authentication App using Kivy and SQLite
+# Simple Android Login Authentication App using Kivy and SQLite
 This README provides instructions for setting up and understanding a basic Android login authentication app built using Kivy and SQLite. The app allows users to log in with their credentials and validates them against stored data in an SQLite database.
 
 # Features
