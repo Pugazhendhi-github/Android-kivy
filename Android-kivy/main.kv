@@ -1,0 +1,207 @@
+Screenmanager:
+	LogIn:
+	HomePage:
+	SignUp:
+		
+
+
+<Login>:
+	name:"login"
+	
+	Screen:
+		
+		MDLabel:
+			text : "welcome"
+			font_size :"48dp"
+			halign: 'center'
+			color: "#FF5623"
+			pos_hint:{'center_y':.8}
+		MDTextField:
+			id:login_UN
+			hint_text : "UserName"
+			icon_right : "account"
+			font_size : "20dp"
+			size_hint_x:.85
+			pos_hint : {"center_x":.5,"center_y":.65 }
+			on_text: self.text= self.text.replace(" ","")
+			write_tab : False
+		MDTextField:
+			id: login_pswd
+			hint_text : "Password"
+			password : True
+			icon_right: "eye-off"
+			font_size : "20dp"
+			size_hint_x:.85
+			pos_hint : {"center_x":.5,"center_y":.5 }
+			on_text: self.text= self.text.replace(" ","")
+			write_tab :False
+
+		BoxLayout:
+			size_hint: .85, None
+			height: "30dp"
+			pos_hint : {"center_x":.5, "center_y":.4}
+			spacing : "5dp"
+			MDCheckbox:
+				id:cb
+				size_hint:None, None
+				width : "30dp"
+				height : "30dp"
+				pos_hint : {"center_x":.5,"center_y":.5 }
+				on_press:
+					login_pswd.password = False if login_pswd.password == True else True
+					login_pswd.icon_right = "eye" if login_pswd.icon_right == "eye-off" else "eye-off"
+						
+			MDLabel:
+				text : "[ref=Show Password]Show Password[/ref]"
+				markup : True
+				pos_hint : {"center_x":.5,"center_y":.5 }
+				on_ref_press:
+					cb.active = False if cb.active == True else True
+					login_pswd.password = False if login_pswd.password == True else True
+					login_pswd.icon_right = "eye" if login_pswd.icon_right == "eye-off" else "eye-off"
+			BoxLayout:
+				size_hint: .6, None
+				height: "30dp"
+				pos_hint : {"center_x":.4, "center_y":.2}
+				spacing : "25dp"
+				MDFlatButton:
+					text : "SIGN IN"
+					font_size : "22dp"
+					md_bg_color: "#FF5623"
+					pos_hint : {"center_x":.5,"center_y":0 }
+					on_press: app.login(login_UN.text, login_pswd.text)
+					
+
+				MDFlatButton:
+					text : "SIGN UP"
+					font_size : "22dp"
+					md_bg_color: "#FF5623"
+					pos_hint : {"center_x":.5,"center_y":0 }
+
+					on_press: root.manager.current = 'signup'
+
+
+
+		
+
+<HomePage>:
+	name:"Home"
+
+	
+    FitImage:
+    	source:"background.jpeg"
+    
+    MDIcon:
+    	icon:"tick.png"
+    	pos_hint:{"center_x":.5, "center_y":.8}
+    	size_hint: None, None
+    	icon_size: "100sp"
+
+    MDLabel:
+        text: "Booking Processed! Your order is on its way."
+        halign: "center"
+        bold:True
+        font_size:20
+        color:"white"
+        pos_hint:{"center_y":.3}
+    MDFlatButton:
+    	text:"Continue"
+    	style: "tonal"
+    	background_color:"white"
+    	text_color:"white"
+    	theme_text_color:"Custom"
+    	size_hint_y:.05
+    	border_color:"white"
+    	pos_hint:{"center_x":.5, "center_y":.1}
+	
+
+    
+<SignUp>:
+	name:"signup"
+	
+	Screen:
+		
+		MDLabel:
+			text : "SIGN UP"
+			font_size :"48dp"
+			halign: 'center'
+			color: "#FF5623"
+			pos_hint:{'center_y':.8}
+		MDTextField:
+			id:username
+			hint_text : "UserName"
+			icon_right : "account"
+			font_size : "20dp"
+			size_hint_x:.85
+			pos_hint : {"center_x":.5,"center_y":.65 }
+			on_text: self.text= self.text.replace(" ","")
+			write_tab : False
+		MDTextField:
+			id :email
+			hint_text : "Email"
+			icon_right : "email"
+			font_size : "20dp"
+			size_hint_x:.85
+			pos_hint : {"center_x":.5,"center_y":.54 }
+			on_text: self.text= self.text.replace(" ","")
+			write_tab : False
+			
+		MDTextField:
+			id : mobile
+			hint_text : "Mobile"
+			icon_right : "phone"
+			font_size : "20dp"
+			max_text_length:10
+			size_hint_x:.85
+			pos_hint : {"center_x":.5,"center_y":.43 }
+			on_text: self.text= self.text.replace(" ","")
+			write_tab : False
+		MDTextField:
+			id: password
+			hint_text : "Password"
+			password : True
+			icon_right: "eye-off"
+			font_size : "20dp"
+			size_hint_x:.85
+			pos_hint : {"center_x":.5,"center_y":.31 }
+			on_text: self.text= self.text.replace(" ","")
+			write_tab :False
+
+		BoxLayout:
+			size_hint: .85, None
+			height: "30dp"
+			pos_hint : {"center_x":.5, "center_y":.2}
+			spacing : "5dp"
+			MDCheckbox:
+				id:cb
+				size_hint:None, None
+				width : "30dp"
+				height : "30dp"
+				pos_hint : {"center_x":.5,"center_y":.5 }
+				on_press:
+					password.password = False if password.password == True else True
+					password.icon_right = "eye" if password.icon_right == "eye-off" else "eye-off"
+						
+			MDLabel:
+				text : "[ref=Show Password]Show Password[/ref]"
+				markup : True
+				pos_hint : {"center_x":.5,"center_y":.5 }
+				on_ref_press:
+					cb.active = False if cb.active == True else True
+					password.password = False if password.password == True else True
+					password.icon_right = "eye" if password.icon_right == "eye-off" else "eye-off"
+			BoxLayout:
+				size_hint: .6, None
+				height: "30dp"
+				pos_hint : {"center_x":.4, "center_y":.1}
+				spacing : "25dp"
+				
+				MDFlatButton:
+					text : "SIGN UP"
+					font_size : "22dp"
+					md_bg_color: "#FF5623"
+					on_press: app.signup(username.text, email.text, mobile.text, password.text)
+
+
+		
+
